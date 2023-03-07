@@ -1,6 +1,16 @@
 <html>
     <head>
+        
         <style>
+           .buttons3{
+            width: 58px;
+            height: 40px;
+            font-size: 14px;
+            margin: 0.8px;
+            border: none;
+            background-color: #f7f7f7;
+            text-align: center;
+           }
            .buttons3 button{
             width: 58px;
             height: 40px;
@@ -8,9 +18,29 @@
             margin: 0.8px;
             border: none;
             background-color: #f7f7f7;
+            
+           }
+           td{
+            text-align: center;
+           }
+           .option1{
+            width: 58px;
+            height: 40px;
+            background-color: #f7f7f7;
+            border: none;
+           }
+           .option2{
+            width: 58px;
+            height: 40px;
+            background-color: #f7f7f7;
+            border: none;
            }
            button:hover{
             background-color: #d4d4d4;
+           }
+           .buttons3 input{
+            background-color: #f7f7f7;
+            font-size: 15px;
            }
            .buttons1 button{
                 width: 58px;
@@ -24,12 +54,20 @@
                 background-color: #f1f1f1;
                 width: 320px;
                 margin: auto;
+                box-shadow: 8px 8px 8px lightgray;
+                margin-top: 150px;
            }
+           .dispaly{
+            height: 400px;
+            padding: 50px;
+
+           }
+           
            .buttons2 button{
                 border: none;
                 margin: 5px;
            }
-           .drop-content1{
+           .drop-content1, .drop-content2{
             display: none;
             position: absolute;
             z-index: 1;
@@ -37,10 +75,10 @@
            .show{
             display: block;
            }
-           .btn1{
+           .btn1, .btn2{
             cursor: pointer;
            }
-           .drop-content1 button{
+           .drop-content1 button, .drop-content2 button{
             width: 58px;
             height: 40px;
             font-size: 14px;
@@ -51,98 +89,142 @@
            .drop-content1{
             background-color: #d4d4d4;
             width: 254px;
-            height: 88px;
-            padding-left: 4px;
-            border-radius: 10px;
+            height: 85px;
+            /* padding-left: 3px; */
            }
+           .drop-content2{
+            background-color: #d4d4d4;
+            width: 190px;
+            height: 85px;
+           }
+           input{
+            border: none;
+            background-color: #f1f1f1;;
+           }
+           
         </style>
           
     </head>
     <body>
         <div class="main">
-            <div class="buttons1">
-                <button>DEG</button>
-                <button>F-E</button>
-                <br>
-                <button>MC</button>
-                <button>MR</button>
-                <button>M+</button>
-                <button>M-</button>
-                <button>MS</button>
-            </div>
-            <div class="buttons2">
-            <button class="btn1"onclick="myFunction1()">Trigonometry <i class="fa-light fa-chevron-down"></i></button>
-            <div id="drop1" class="drop-content1">
-                <button>2<sup>nd</sup></button>
-                <button>sin</button>
-                <button>cos</button>
-                <button>tan</button><br>
-                <button>hyp</button>
-                <button>sec</button>
-                <button>csc</button>
-                <button>cot</button>
-            </div>
-            <button>Function</button>
-            </div>
-        <div class="buttons3">
-            <button> 2<sup>nd</sup></button>
-            <button>&pi;</button>
-            <button>e</button>
-            <button>C</button>
-            <button><i class="fa-light fa-delete-left"></i></button><br>
-            <button>x<sup>2</sup></button>
-            <button>1/x</button>
-            <button>|x|</button>
-            <button>exp</button>
-            <button>mod</button><br>
-            <button><sup>2</sup>&#8730;x</button>
-            <button>(</button>
-            <button>)</button>
-            <button><i>n</i>!</button>
-            <button>&divide;</button><br>
-            <button>x<sup>y</sup></button>
+            <table class="calc">
+            <tr>
+                <td colspan="5"><input class="display" id="display" name="display" value="0" size="40" maxlength="25" style="line-height: 80px; text-align: end; max-width: 285px; font-size: 30px;"></td>
+            </tr>
+            <tr>
+                <td class="buttons1"><button>DEG</button></td>
+                <td class="buttons1"><button>F-E</button></td>
+            </tr>
+            <tr>
+                <td class="buttons1"><button>MC</button></td>
+                <td class="buttons1"><button>MR</button></td>
+                <td class="buttons1"><button>M+</button></td>
+                <td class="buttons1"><button>M-</button></td>
+                <td class="buttons1"><button>MS</button></td>
+            </tr>
             
-            <button>7</button>
-            <button>8</button>
-            <button>9</button>
-            <button>X</button><br>
-            <button>10<sup>x</sup></button>
-            <button>4</button>
-            <button>5</button>
-            <button>6</button>
-            <button>-</button><br>
-            <button>log</button>
-            <button>1</button>
-            <button>2</button>
-            <button>3</button>
-            <button>+</button><br>
-            <button>ln</button>
-            <button><sup>+</sup>/<sub>-</sub></button>
-            <button>0</button>
-            <button>.</button>
-            <button style="background-color: #92c2e8;">=</button>
+            
+            <tr>
+                
+                <td colspan="2">
+                    <div class="buttons2">
+                        <button class="btn1"onclick="myFunction1()">Trigonometry <i class="fa-solid fa-chevron-down"></i></button>
+                        <div id="drop1" class="drop-content1">
+                            <button>2nd</button>
+                            <button>sin</button>
+                            <button>cos</button>
+                            <button>tan</button><br>
+                            <button>hyp</button>
+                            <button>sec</button>
+                            <button>csc</button>
+                            <button>cot</button>
+                        </div>
+                        </div></td>
+                
+                        <td colspan="2">
+                            <div class="buttons2">
+                                <button class="btn2"onclick="myFunction2()">&#402; Functions <i class="fa-solid fa-chevron-down"></i></button>
+                                <div id="drop2" class="drop-content2">
+                                    <button>|x|</button>
+                                    <button>⌊x⌋</button>
+                                    <button>⌈x⌉</button><br>
+                                    <button>rand</button>
+                                    <button>dms</button>
+                                    <button>deg</button>
+                                </div>
+                                </div></td>
+            </tr> 
+            
+        <tr>
+            <td class="buttons3"><button type="button" id="second" onclick="change()" value="2nd">2nd</button></td>
+            <td class="buttons3"><button>&pi;</button></td>
+            <td class="buttons3"><button>e</button></td>
+            <td class="buttons3"><button>C</button></td>
+            <td class="buttons3"><button><i class="fa-light fa-delete-left"></i></button></td>
+        </tr>
+        <tr>
+            <!-- <td class="buttons3"><input type="button" id="secbtn" value="x²"></td> -->
+            <td ><button type="button" id ="square" class="option1">x<sup>2</sup></button> <button id="cube" class="option2" style="display:none;">x<sup>3</sup></button></td>
+            <td class="buttons3"><button>1/x</button></td>
+            <td class="buttons3"><button>|x|</button></td>
+            <td class="buttons3"><button>exp</button></td>
+            <td class="buttons3"><button>mod</button></td>
+        </tr>
+        <tr>
+            
+            <td ><button type="button" id ="square" class="option1"><sup>2</sup>√x</button> <button id="cube" class="option2" style="display:none;"><sup>3</sup>√x</button></td>
+            <td class="buttons3"><button>(</button></td>
+            <td class="buttons3"><button>)</button></td>
+            <td class="buttons3"><button><i>n</i>!</button></td>
+            <td class="buttons3"><button>&divide;</button></td>
+        </tr>
+        <tr>
+            
+            <td ><button type="button" id ="square" class="option1">x<sup>y</sup></button> <button id="cube" class="option2" style="display:none;"><sup>y</sup>√x</button></td>
+            <td><button class="buttons3" type="button" value="7">7</button></td>
+            <td><button class="buttons3" type="button" value="8">8</button></td>
+            <td><button class="buttons3" type="button" value="9">9</button></td>
+            <td><button class="buttons3" type="button" value="X">X</button></td>
+        </tr>
+        <tr>
+           
+            <td ><button type="button" id ="square" class="option1">10<sup>x</sup></button> <button id="cube" class="option2" style="display:none;">2<sup>x</sup></button></td>
+            <td><button class="buttons3" type="button" value="4">4</button></td>
+            <td><button class="buttons3" type="button" value="5">5</button></td>
+            <td><button class="buttons3" type="button" value="6">6</button></td>
+            <td><button class="buttons3" type="button" value="-">-</button></td>
+        </tr>
+        <tr>
+            
+            <td ><button type="button" id ="square" class="option1">log</button> <button id="cube" class="option2" style="display:none;">log<sub>y</sub>x</button></td>
+            <td><button class="buttons3" type="button" value="1" >1</button></td>
+            <td><button class="buttons3" type="button" value="2" >2</button></td>
+            <td><button class="buttons3" type="button" value="3" >3</button></td>
+            <td><button class ="buttons3" type="button" value="+">+</button></td>
+        </tr>
+        <tr>
+            
+            <td ><button type="button" id ="square" class="option1">ln</button> <button id="cube" class="option2" style="display:none;">e<sup>x</sup></button></td>
+            <td class="buttons3"><button><sup>+</sup>/<sub>-</sub></button></td>
+            <td class="buttons3"><button>0</button></td>
+            <td class="buttons3"><button>.</button></td>
+            <td><button class="buttons3" type="button" value="=" style="background-color: #92c2e8;" value="=">=</button></td>
+        </tr>
 
             <script src="https://kit.fontawesome.com/5594ca95a7.js" crossorigin="anonymous"></script>
-            <script>
-                function myFunction1() {
-                document.getElementById("drop1").classList.toggle("show");
-                }
-
-                // Close the dropdown if the user clicks outside of it
-                window.onclick = function(event) {
-                if (!event.target.matches('.btn1')) {
-                    var dropdowns = document.getElementsByClassName("drop-content1");
-                    var i;
-                    for (i = 0; i < dropdowns.length; i++) {
-                    var openDropdown = dropdowns[i];
-                    if (openDropdown.classList.contains('show')) {
-                        openDropdown.classList.remove('show');
-                    }
-                    }
-                }
-                }
-            </script>
-        </div>
-        </div>
+            <!-- <script>
+            //     function myFunction1() {  
+            //     var click = document.getElementsById("drop1");  
+            //     if(click.style.display ==="none") {  
+            //         click.style.display ="block";  
+            //     } else {  
+            //         click.style.display ="none";  
+            //     }   
+            // }  
+                
+            </script> -->
+            <script src="index.js"></script>
+        </table>
+    </div>
     </body>
 </html>
