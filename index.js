@@ -37,13 +37,60 @@
 // 	text += x;
 // 	document.getElementById('display').value = text;
 // }
-const display = document.getElementById('display');
-const buttons = document.querySelectorAll("button");
-console.log(buttons);
+// var val = "";
+var display1 = document.getElementById('display');
+var buttons = document.querySelectorAll("button");
+
 buttons.forEach((item) => {
+	
 	item.onclick = (e) => {
+		console.log("id",item.id);
+		if(item.id==="second"){
+			change();
+		}
+		if(item.id==="btn1"){
+			myFunction1()
+		}
+		if(item.id==="btn2"){
+			myFunction2()
+		}
+		if(e.target.value == '='){
+			document.getElementById('previous').value = display1.value;
+			val = eval(display1.value);
+			display1.value = val;
+			
+		}
+		else if(e.target.value == 'C'){
+			val = " ";
+			document.getElementById('previous').value = " ";
+			display1.value = val;
+		}
+		else if(item.id === "sin"){
+			sin();
+		}
+		else if(item.id === "cos"){
+			cos();
+		}
+		else if(item.id === "tan"){
+			tan();
+		}
+		else if(item.id === "fact"){
+			fact();
+		}
+		else if(item.id === "plusminus"){
+			plusminus();
+		}
+		else if(item.id === "square"){
+			square();
+		}
+		else if(item.id === "cube"){
+			cube();
+		}
+		else{
 		val = e.target.value;
-		display.value += val;
+		
+		display1.value += val;
+		}
 	}
 }
 ); 
@@ -63,24 +110,7 @@ function myFunction1() {
        click.style.display ="none";
     } 
  }
-//  function change()
-// {
-//     var ch = document.querySelector('#second');
-// 	var ch1 = document.querySelector('#secbtn');
-// 	var ch2 = document.querySelector('#secbtn2');
-	
-//     if (ch.value=="1st" && ch1.value=="x³" && ch2.value=="∛x"){
-// 		ch.value = "2nd";
-// 		ch1.value = "x²";
-// 		ch2.value="√x";
-// 	}
-//     else {
-// 		ch.value = "1st";
-// 		ch1.value = "x³";
-// 		ch2.value = "∛x";
-// 	 }
-	
-// }
+
 function change(){
 	const col1 = document.getElementsByClassName("option1");
 	const col2 = document.getElementsByClassName("option2");
@@ -100,3 +130,40 @@ function change(){
 		}
 	}};
 
+function sin(){
+	display1.value = Math.sin(display1.value);
+}
+function cos(){
+	display1.value = Math.cos(display1.value);
+}
+function tan(){
+	display1.value = Math.tan(display1.value);
+}
+function fact(){
+	if (display1.value < 0) {
+		display1.value = "Error!";
+	}
+	
+	// if number is 0
+	else if (display1.value === 0) {
+		display1.value = "1";
+	}
+	
+	// if number is positive
+	else {
+		let fact = 1;
+		for (i = 1; i <= display1.value; i++) {
+			fact *= i;
+		}
+		display1.value = fact;
+	}
+}
+function plusminus(){
+		display1.value = -(display1.value)
+}
+function square(){
+	display1.value = display1.value ** 2;
+}
+function cube(){
+	display1.value = display1.value ** 3;
+}
