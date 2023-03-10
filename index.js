@@ -43,17 +43,8 @@ var buttons = document.querySelectorAll("button");
 
 buttons.forEach((item) => {
 	
-	item.onclick = (e) => {
+	item.addEventListener('click', (e) => {
 		console.log("id",item.id);
-		if(item.id==="second"){
-			change();
-		}
-		if(item.id==="btn1"){
-			myFunction1()
-		}
-		if(item.id==="btn2"){
-			myFunction2()
-		}
 		if(e.target.value == '='){
 			document.getElementById('previous').value = display1.value;
 			val = eval(display1.value);
@@ -65,34 +56,14 @@ buttons.forEach((item) => {
 			document.getElementById('previous').value = " ";
 			display1.value = val;
 		}
-		else if(item.id === "sin"){
-			sin();
-		}
-		else if(item.id === "cos"){
-			cos();
-		}
-		else if(item.id === "tan"){
-			tan();
-		}
-		else if(item.id === "fact"){
-			fact();
-		}
-		else if(item.id === "plusminus"){
-			plusminus();
-		}
-		else if(item.id === "square"){
-			square();
-		}
-		else if(item.id === "cube"){
-			cube();
-		}
+		
 		else{
 		val = e.target.value;
 		
 		display1.value += val;
 		}
 	}
-}
+)}
 ); 
 function myFunction1() {
     var click = document.getElementById("drop1");
@@ -130,6 +101,61 @@ function change(){
 		}
 	}};
 
+function inverse(){
+	var trigon1 = document.getElementsByClassName('trigo1');
+	var trigon2 = document.getElementsByClassName('trigo2');
+	var trigon3 = document.getElementsByClassName('trigo3');
+	if(trigon2[0].style.display==="none" && trigon1[0].style.display==="inline"){
+		for(let i=0;i<6;i++){
+			trigon2[i].style.display = "inline";
+		}
+		for(let i=0;i<6;i++){
+			trigon1[i].style.display = "none";
+		}
+		for(let i=0;i<6;i++){
+			trigon3[i].style.display = "none";
+		}
+	}
+	else{
+		for(let i=0;i<6;i++){
+			trigon1[i].style.display = "inline";
+		}
+		for(let i=0;i<6;i++){
+			trigon2[i].style.display = "none";
+		}
+		for(let i=0;i<6;i++){
+			trigon3[i].style.display = "none";
+		}
+	}
+};
+function hyp(){
+	var trigon1 = document.getElementsByClassName('trigo1');
+	var trigon2 = document.getElementsByClassName('trigo2');
+	var trigon3 = document.getElementsByClassName('trigo3');
+	if(trigon3[0].style.display==="none" && trigon1[0].style.display==="inline"){
+		for(let i=0;i<6;i++){
+			trigon3[i].style.display = "inline";
+		}
+		for(let i=0;i<6;i++){
+			trigon1[i].style.display = "none";
+		}
+		for(let i=0;i<6;i++){
+			trigon2[i].style.display = "none";
+		}
+	}
+	else{
+		for(let i=0;i<6;i++){
+			trigon1[i].style.display = "inline";
+		}
+		for(let i=0;i<6;i++){
+			trigon3[i].style.display = "none";
+		}
+		for(let i=0;i<6;i++){
+			trigon2[i].style.display = "none";
+		}
+	}
+};
+
 function sin(){
 	display1.value = Math.sin(display1.value);
 }
@@ -166,4 +192,42 @@ function square(){
 }
 function cube(){
 	display1.value = display1.value ** 3;
+}
+function tenpowerx(){
+	display1.value = 10**display1.value;
+}
+function twopowerx(){
+	display1.value = 2**display1.value;
+}
+function backspace(){
+	display1.value = display1.value.substr(0, display1.value.length - 1);
+}
+function ln(){
+	display1.value = Math.log(display1.value);
+}
+function log(){
+	display1.value = Math.log10(display1.value);
+}
+function sqroot(){
+	display1.value = Math.sqrt(display1.value);
+}
+function cbroot(){
+	display1.value = Math.cbrt(display1.value);
+}
+function onebyx(){
+	display1.value = 1/display1.value;
+}
+function positive(){
+	if(display1.value<0){
+		display1.value = -(display1.value);
+	}
+	else{
+		display1.value;
+	}
+}
+function floor(){
+	display1.value = Math.floor(display1.value);
+}
+function ceil(){
+	display1.value = Math.ceil(display1.value);
 }
