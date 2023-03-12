@@ -118,15 +118,15 @@
                 <td colspan="5"><input class="display" id="display" name="display" placeholder="0" size="40" maxlength="25" style="line-height: 80px; text-align: end; max-width: 285px; font-size: 30px;"></td>
             </tr>
             <tr>
-                <td><button class="buttons1">DEG</button></td>
-                <td><button class="buttons1">F-E</button></td>
+                <td id="d2g"><button class="buttons1" id="deg" value="deg" style="display: block;" onclick="degtorad()">DEG</button><button class="buttons1" id="rad" style="display: none;" value="rad" onclick="degtorad()">RAD</button></td>
+                <td><button class="buttons1" onclick="fe()">F-E</button></td>
             </tr>
             <tr>
-                <td><button class="buttons1">MC</button></td>
-                <td><button class="buttons1">MR</button></td>
-                <td><button class="buttons1">M+</button></td>
-                <td><button class="buttons1">M-</button></td>
-                <td><button class="buttons1">MS</button></td>
+                <td><button class="buttons1" onclick="mc()">MC</button></td>
+                <td><button class="buttons1" onclick="mr()">MR</button></td>
+                <td><button class="buttons1" onclick="mplus()">M+</button></td>
+                <td><button class="buttons1" onclick="mminus()">M-</button></td>
+                <td><button class="buttons1" onclick="ms()">MS</button></td>
             </tr>
             
             
@@ -137,13 +137,13 @@
                         <button class="btn1"onclick="myFunction1()" id="btn1"> &#9698;Trigonometry<i class="fa-solid fa-chevron-down"></i></button>
                         <div id="drop1" class="drop-content1">
                             <button onclick="inverse()">2nd</button>
-                            <button id="sin" onclick="sin()" value="sin(" class="trigo1" style="display: inline;">sin</button><button class="trigo2" id="sinin" style="display: none; font-size: 12px;" value="sinin">sin<sup>-1</sup></button><button class="trigo3" style="display: none;">sinh</button>
-                            <button id="cos" onclick="cos()" value="cos(" class="trigo1" style="display: inline;">cos</button><button class="trigo2" id="cosin" style="display: none; font-size: 12px;">cos<sup>-1</sup></button><button class="trigo3" style="display: none;">cosh</button>
-                            <button id="tan" onclick="tan()" value="tan(" class="trigo1" style="display: inline;">tan</button><button class="trigo2" id="tanin" style="display: none; font-size: 12px;">tan<sup>-1</sup></button><button class="trigo3" style="display: none;">tanh</button><br>
+                            <button id="sin" onclick="sin()" value="sin" class="trigo1" style="display: inline;">sin</button><button class="trigo2" id="sinin" style="display: none; font-size: 12px;" onclick="sinin()">sin<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="sinh()">sinh</button>
+                            <button id="cos" onclick="cos()" value="cos" class="trigo1" style="display: inline;">cos</button><button class="trigo2" id="cosin" style="display: none; font-size: 12px;" onclick="cosin()">cos<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="cosh()">cosh</button>
+                            <button id="tan" onclick="tan()" value="tan" class="trigo1" style="display: inline;">tan</button><button class="trigo2" id="tanin" style="display: none; font-size: 12px;" onclick="tanin()">tan<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="tanh()">tanh</button><br>
                             <button onclick="hyp()">hyp</button>
-                            <button class="trigo1" style="display: inline;">sec</button><button style="display: none; font-size: 12px;" class="trigo2">sec<sup>-1</sup></button><button class="trigo3" style="display: none;">sech</button>
-                            <button class="trigo1" style="display: inline;">csc</button><button style="display: none; font-size: 12px;" class="trigo2">cosec<sup>-1</sup></button><button class="trigo3" style="display: none;">cosech</button>
-                            <button class="trigo1" style="display: inline;">cot</button><button  style="display: none; font-size: 12px;" class="trigo2">cot<sup>-1</sup></button><button class="trigo3" style="display: none;">coth</button>
+                            <button class="trigo1" style="display: inline;" onclick="sec()">sec</button><button style="display: none; font-size: 12px;" class="trigo2" onclick="secin()">sec<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="sech()">sech</button>
+                            <button class="trigo1" style="display: inline;" onclick="cosec()">csc</button><button style="display: none; font-size: 12px;" class="trigo2" onclick="cosecin()">cosec<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="cosech()">cosech</button>
+                            <button class="trigo1" style="display: inline;" onclick="cot()">cot</button><button  style="display: none; font-size: 12px;" class="trigo2" onclick="cotin()">cot<sup>-1</sup></button><button class="trigo3" style="display: none;" onclick="coth()">coth</button>
                         </div>
                         </div></td>
                 
@@ -151,9 +151,9 @@
                             <div class="buttons2">
                                 <button class="btn2"onclick="myFunction2()" id="btn2">&#402; Functions <i class="fa-solid fa-chevron-down"></i></button>
                                 <div id="drop2" class="drop-content2">
-                                    <button id="positive">|x|</button>
-                                    <button id="floor">⌊x⌋</button>
-                                    <button id="ceil">⌈x⌉</button><br>
+                                    <button id="positive" onclick="abs()">|x|</button>
+                                    <button id="floor" onclick="floor()">⌊x⌋</button>
+                                    <button id="ceil" onclick="ceil()">⌈x⌉</button><br>
                                     <button>rand</button>
                                     <button>dms</button>
                                     <button>deg</button>
@@ -165,14 +165,14 @@
             <td><button class="buttons3" type="button" id="second" onclick="change()">2nd</button></td>
             <td><button class="buttons3" value="3.14159265359">&pi;</button></td>
             <td><button class="buttons3" value="2.718281828459">e</button></td>
-            <td><button class="buttons3" type="button"  value="C">C</button></td>
-            <td><button class="buttons3" id="backspace"><i class='fas fa-backspace'></i></button></td>
+            <td><button class="buttons3" type="button"  value="C" onclick="clear()">C</button></td>
+            <td><button class="buttons3" id="backspace" onclick="backspace()"><i class='fas fa-backspace'></i></button></td>
         </tr>
         <tr>
-            <td ><button type="button" id ="square" class="option1" onclick="square()">x<sup>2</sup></button> <button id="cube" class="option2" style="display:none;">x<sup>3</sup></button></td>
-            <td><button class="buttons3" id="onebyx"><sup>1</sup>/<sub>x</sub></button></td>
-            <td><button class="buttons3" id="positive">|x|</button></td>
-            <td><button class="buttons3">exp</button></td>
+            <td ><button type="button" class="option1" onclick="square()">x<sup>2</sup></button> <button id="cube" class="option2" style="display:none;">x<sup>3</sup></button></td>
+            <td><button class="buttons3" onclick="onebyx()"><sup>1</sup>/<sub>x</sub></button></td>
+            <td><button class="buttons3" onclick="abs()">|x|</button></td>
+            <td><button class="buttons3" onclick="exp()">exp</button></td>
             <td><button class="buttons3">mod</button></td>
         </tr>
         <tr>
@@ -180,7 +180,7 @@
             <td ><button type="button" id ="sqroot" class="option1" onclick="sqrt()"><sup>2</sup>√x</button> <button id="cbroot" class="option2" style="display:none;" onclick="cbroot()"><sup>3</sup>√x</button></td>
             <td><button class="buttons3">(</button></td>
             <td><button class="buttons3">)</button></td>
-            <td><button class="buttons3" id="fact"><i>n</i>!</button></td>
+            <td><button class="buttons3" id="fact" onclick="fact()"><i>n</i>!</button></td>
             <td><button value="/" class="buttons3">&divide;</button></td>
         </tr>
         <tr>
@@ -193,7 +193,7 @@
         </tr>
         <tr>
            
-            <td ><button type="button" id ="10powerx" class="option1">10<sup>x</sup></button> <button id="twopowerx" class="option2" style="display:none;">2<sup>x</sup></button></td>
+            <td ><button type="button" id ="10powerx" class="option1" onclick="tenpowerx()">10<sup>x</sup></button> <button id="twopowerx" class="option2" style="display:none;" onclick="twopowerx()">2<sup>x</sup></button></td>
             <td><button class="buttons3" type="button" value="4">4</button></td>
             <td><button class="buttons3" type="button" value="5">5</button></td>
             <td><button class="buttons3" type="button" value="6">6</button></td>
@@ -201,7 +201,7 @@
         </tr>
         <tr>
             
-            <td ><button type="button" id ="log" class="option1" value="log(" onclick="log()">log</button> <button id="cube" class="option2" style="display:none;">log<sub>y</sub>x</button></td>
+            <td ><button type="button" id ="log" class="option1" value="log" onclick="log()">log</button> <button id="cube" class="option2" style="display:none;" >log<sub>y</sub>x</button></td>
             <td><button class="buttons3" type="button" value="1" >1</button></td>
             <td><button class="buttons3" type="button" value="2" >2</button></td>
             <td><button class="buttons3" type="button" value="3" >3</button></td>
@@ -209,8 +209,8 @@
         </tr>
         <tr>
             
-            <td><button type="button" id ="ln" class="option1" onclick="ln()">ln</button> <button id="cube" class="option2" style="display:none;">e<sup>x</sup></button></td>
-            <td><button class="buttons3" id="plusminus"><sup>+</sup>/<sub>-</sub></button></td>
+            <td><button type="button" id ="ln" class="option1" onclick="ln()">ln</button> <button id="cube" class="option2" style="display:none;" value="2.718281828459**">e<sup>x</sup></button></td>
+            <td><button class="buttons3" id="plusminus" onclick="plusminus()"><sup>+</sup>/<sub>-</sub></button></td>
             <td><button class="buttons3" value="0">0</button></td>
             <td><button class="buttons3" value=".">.</button></td>
             <td><button class="buttons3" type="button" style="background-color: #92c2e8;" value="=">=</button></td>
