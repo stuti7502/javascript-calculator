@@ -383,10 +383,22 @@ function ms(){
 	catch(error){
 		display1.value = "error";
 	}
+	var mc_element = document.getElementById("mc");
+    mc_element.classList.add("fontWt");
+    mc_element.classList.remove("btnDark");
+    var mr_element = document.getElementById("mr");
+    mr_element.classList.add("fontWt");
+    mr_element.classList.remove("btnDark");
 }
 function mc(){
 	console.clear();
 	x=0;
+	var mc_element = document.getElementById("mc");
+    mc_element.classList.remove("fontWt");
+    mc_element.classList.add("btnDark");
+    var mr_element = document.getElementById("mr");
+    mr_element.classList.remove("fontWt");
+    mr_element.classList.add("btnDark");
 }
 function mr(){
 	display1.value = x;

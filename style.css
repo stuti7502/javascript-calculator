@@ -99,3 +99,11 @@
     border-radius: 5px;
     cursor: pointer;
    }
+   .fontWt{
+    font-weight: 600;
+}
+
+.btnDark{
+    color : #999595;
+    font-weight: 600;
+}
