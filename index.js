@@ -277,30 +277,57 @@ function sin(){
 		display1.value = Math.sin(display1.value);
 	}
 	else{
-	previous.value = "sind("+display1.value+")";
+	previous.value = "sin("+display1.value+")";
 	display1.value = Math.sin(display1.value * (Math.PI/180));
 	}
 }
 
 function cos(){
+	if(mode =="RAD"){
+		previous.value = "cos("+display1.value+")";
+		display1.value = Math.cos(display1.value);
+	}
+	else{
 	previous.value = "cos("+display1.value+")";
-	display1.value = Math.cos(display1.value);
+	display1.value = Math.cos(display1.value * (Math.PI/180));
+	}
 }
 function tan(){
+	if(mode =="RAD"){
+		previous.value = "tan("+display1.value+")";
+		display1.value = Math.tan(display1.value);
+	}
+	else{
 	previous.value = "tan("+display1.value+")";
-	display1.value = Math.tan(display1.value);
+	display1.value = Math.tan(display1.value * (Math.PI/180));
+	}
 }
 function sec(){
+	if(mode =="RAD"){
 	previous.value = "sec("+display1.value+")";
     display1.value = 1/Math.cos(display1.value);
+	}else{
+		previous.value = "sec("+display1.value+")";
+	display1.value = 1/Math.cos(display1.value * (Math.PI/180));
+	}
 }
 function cosec(){
-	previous.value = "cosec("+display1.value+")";
-    display1.value = 1/Math.sin(display1.value);
+	if(mode =="RAD"){
+		previous.value = "cosec("+display1.value+")";
+		display1.value = 1/Math.sin(display1.value);
+		}else{
+			previous.value = "cosec("+display1.value+")";
+		display1.value = 1/Math.sin(display1.value * (Math.PI/180));
+		}
 }
 function cot(){
-	previous.value = "cot("+display1.value+")";
-    display1.value = 1/Math.tan(display1.value);
+	if(mode =="RAD"){
+		previous.value = "cot("+display1.value+")";
+		display1.value = 1/Math.tan(display1.value);
+		}else{
+			previous.value = "cot("+display1.value+")";
+		display1.value = 1/Math.tan(display1.value * (Math.PI/180));
+		}
 }
 function sinh(){
 	previous.value = "sinh("+display1.value+")";
