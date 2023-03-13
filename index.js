@@ -370,6 +370,12 @@ function cotin(){
 function mplus(){
 	x += eval(display1.value);
 	console.log(x);
+	var mc_element = document.getElementById("mc");
+    mc_element.classList.add("fontWt");
+    mc_element.classList.remove("btnDark");
+    var mr_element = document.getElementById("mr");
+    mr_element.classList.add("fontWt");
+    mr_element.classList.remove("btnDark");
 }
 function mminus(){
 	x -= eval(display1.value);
@@ -403,6 +409,7 @@ function mc(){
 function mr(){
 	display1.value = x;
 }
+
 function fe(){
 	display1.value = parseFloat(display1.value).toExponential();
 }
