@@ -3,16 +3,38 @@ let x=0;
 var display1 = document.getElementById('display');
 var buttons = document.querySelectorAll("button");
 var previous = document.getElementById('previous');
+var mode = "DEG";
 
 buttons.forEach((item) => {
 	
 	item.addEventListener('click', (e) => {
-		console.log("id",item.id);
-		
+		val = e.target.value;
+		var expression = display1.value;
 		if(e.target.value == '='){
-			previous.value = display1.value;
-			val = eval(display1.value);
-			display1.value = val;
+			
+			const func = expression.split(" ");
+			var a = func[0];
+			var b = func[3];
+			if(func[1]==="log"){
+				var c = Math.log(a);
+				var d = Math.log(b);
+				if(c===0 && d===0){
+					display1.value = 0;
+				}
+				else{
+					previous.value = display1.value;
+					display1.value = c / d;
+				}
+			}else if(func[1]==="root"){
+					display1.value = Math.pow(a, 1/b);
+			}
+			else{
+				previous.value = display1.value;
+				val = eval(display1.value);
+				display1.value = val;
+			}
+				
+				
 			
 		}
 		else if(e.target.value == 'deg'){
@@ -22,27 +44,28 @@ buttons.forEach((item) => {
 			display1.value = "";
 		}
 		else if(e.target.value == 'C'){
-			val = " ";
-			document.getElementById('previous').value = " ";
+			val = "";
+			document.getElementById('previous').value = "";
 			display1.value = val;
 		}
-		
-		else{
-		val = e.target.value;
-		
-		display1.value += val;
+		else if(display1.value==="0"){
+			display1.value = val;
 		}
+		else{
+			let lastChar = display1.value.charAt(display1.value.length - 1);
+			let op = ["+", "-", "*", "/", "%", "."];
+			if(op.includes(val) && op.includes(lastChar)){
+				display1.value += "";
+			}
+			else{
+				display1.value += val;
+				}
+		}	
 	}
 )}
 ); 
-// function myFunction1() {
-//     var click = document.getElementById("drop1");
-//     if(click.style.display ==="none") {
-//        click.style.display ="block";
-//     } else {
-//        click.style.display ="none";
-//     } 
-//  }
+
+//function for trigonometry dropdown
 function myFunction1() {
     document.getElementById("drop1").classList.toggle("show");
     }
@@ -51,15 +74,17 @@ function myFunction1() {
     window.onclick = function(event) {
     if (!event.target.matches('.btn1')) {
         var dropdowns = document.getElementsByClassName("drop-content1");
-        var i;
-        for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
+        var j;
+        for (j = 0; j < dropdowns.length; j++) {
+        var openDropdown = dropdowns[j];
         if (openDropdown.classList.contains('show')) {
             openDropdown.classList.remove('show');
         }
         }
     }
-    }
+}
+
+//function for dropdown of functions
 function myFunction2() {
 	document.getElementById("drop2").classList.toggle("show");
 	}
@@ -76,27 +101,24 @@ function myFunction2() {
 		}
 		}
 	}
-	}
- function degtorad(){
+}
+
+//change the button from deg to rad
+function degtorad(){
 	var click = document.getElementById("deg");
 	var click1 = document.getElementById("rad");
     if(click1.style.display ==="none") {
        click1.style.display ="block";
 	   click.style.display ="none";
+	   mode = "RAD";
     } else {
        click.style.display ="block";
 	   click1.style.display ="none";
+	   mode = "DEG";
     } 
 }
-//  function myFunction2() {
-//     var click = document.getElementById("drop2");
-//     if(click.style.display ==="none") {
-//        click.style.display ="block";
-//     } else {
-//        click.style.display ="none";
-//     } 
-//  }
 
+// on clicking 2nd
 function change(){
 	const col1 = document.getElementsByClassName("option1");
 	const col2 = document.getElementsByClassName("option2");
@@ -116,6 +138,7 @@ function change(){
 		}
 	}};
 
+//on clicking second inside of trigo
 function inverse(){
 	var trigon1 = document.getElementsByClassName('trigo1');
 	var trigon2 = document.getElementsByClassName('trigo2');
@@ -143,6 +166,7 @@ function inverse(){
 		}
 	}
 };
+//on clicking hyp inside of trigo
 function hyp(){
 	var trigon1 = document.getElementsByClassName('trigo1');
 	var trigon2 = document.getElementsByClassName('trigo2');
@@ -193,10 +217,10 @@ function fact(){
 	}
 }
 function plusminus(){
-		display1.value = -(display1.value)
+	display1.value = -(display1.value)
 }
 function square(){
-	previous.value = "sqr("+display1.value+")";
+	previous.value = "square("+display1.value+")";
 	display1.value = display1.value ** 2;
 }
 function cube(){
@@ -204,48 +228,57 @@ function cube(){
 	display1.value = display1.value ** 3;
 }
 function tenpowerx(){
+	previous.value = "10^"+display1.value;
 	display1.value = 10**display1.value;
 }
 function twopowerx(){
+	previous.value = "2^"+display1.value;
 	display1.value = 2**display1.value;
 }
 function backspace(){
 	display1.value = display1.value.substr(0, display1.value.length - 1);
 }
 function ln(){
+	previous.value = "ln("+display1.value+")";
 	display1.value = Math.log(display1.value);
 }
 function log(){
+	previous.value = "log("+display1.value+")";
 	display1.value = Math.log10(display1.value);
 }
 function sqroot(){
+	previous.value = "squareroot("+display1.value+")";
 	display1.value = Math.sqrt(display1.value);
 }
 function cbroot(){
+	previous.value = "cuberoot("+display1.value+")";
 	display1.value = Math.cbrt(display1.value);
 }
 function onebyx(){
+	previous.value = "1/"+display1.value;
 	display1.value = 1/display1.value;
 }
 function abs(){
+	previous.value = "abs("+display1.value+")";
 	display1.value = Math.abs(display1.value);
 }
 function floor(){
+	previous.value = "floor("+display1.value+")";
 	display1.value = Math.floor(display1.value);
 }
 function ceil(){
+	previous.value = "ceil("+display1.value+")";
 	display1.value = Math.ceil(display1.value);
 }
+
 function sin(){
-	if(document.getElementById('deg').value="deg"){
+	if(mode =="RAD"){
 		previous.value = "sin("+display1.value+")";
 		display1.value = Math.sin(display1.value);
 	}
-	else if(document.getElementById('rad').value="rad"){
+	else{
 	previous.value = "sind("+display1.value+")";
 	display1.value = Math.sin(display1.value * (Math.PI/180));
-	}else{
-		display1.value;
 	}
 }
 
@@ -294,7 +327,7 @@ function coth(){
     display1.value = 1/Math.tanh(display1.value);
 }
 function sinin(){
-	previous.value = "sin-1"+ "("+display1.value+")";
+	previous.value = "sin-1("+display1.value+")";
     if(display1.value > -1 && display1.value < 1) {
     display1.value = Math.asin(display1.value);
     }
@@ -303,6 +336,7 @@ function sinin(){
     }
 }
 function cosin(){
+	previous.value = "cos-1("+display1.value+")";
     if(display1.value > -1 && display1.value < 1) {
         display1.value = Math.acos(display1.value);
         }
@@ -311,6 +345,7 @@ function cosin(){
         }
 }
 function tanin(){
+	previous.value = "tan-1("+display1.value+")";
     if(display1.value > -1 && display1.value < 1) {
         display1.value = Math.atan(display1.value);
         }
@@ -319,14 +354,16 @@ function tanin(){
         }
 }
 function secin(){
+		previous.value = "sec-1("+display1.value+")";
         display1.value = Math.acos(1/display1.value);
 }
 function cosecin(){
-    
+		previous.value = "cosec-1("+display1.value+")";
         display1.value = Math.asin(1/display1.value);
     
 }
 function cotin(){
+		previous.value = "cot-1("+display1.value+")";
         display1.value = Math.atan(1/display1.value);
        
 }
@@ -356,4 +393,30 @@ function mr(){
 }
 function fe(){
 	display1.value = parseFloat(display1.value).toExponential();
+}
+function exp(){
+	var expression = display1.value;
+	const eval1 = expression.split(".");
+	if(eval1.length === 2){
+		display1.value += "e+0"
+	}
+	else{
+	display1.value += ".e+0"
+	}
+}
+function ConvertDDToDMS()
+{
+	previous.value = "dms("+display1.value+")";
+	var degree =  Math.floor(display1.value);
+    var minutes = ((display1.value - Math.floor(display1.value)) * 60.0); 
+    var seconds = (minutes - Math.floor(minutes)) * 60.0;
+	display1.value = degree + ":" + Math.floor(minutes) + ":" + seconds.toFixed(2);
+}
+function deg(){
+	previous.value = "degrees("+display1.value+")";
+	var pi = Math.PI;
+   display1.value = display1.value * (180/pi);
+}
+function rand(){
+	display1.value = Math.random(display1.value);
 }
