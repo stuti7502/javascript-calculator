@@ -89,6 +89,24 @@ function myFunction3() {
 	}
 	
 }
+//function for trigonometry dropdown
+function myFunction1() {
+    document.getElementById("drop1").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+    if (!event.target.matches('.btn1')) {
+        var dropdowns = document.getElementsByClassName("drop-content1");
+        var j;
+        for (j = 0; j < dropdowns.length; j++) {
+        var openDropdown = dropdowns[j];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+}
 //function for dropdown of functions
 function myFunction2() {
 	document.getElementById("drop2").classList.toggle("show");
@@ -108,24 +126,7 @@ function myFunction2() {
 	}
 }
 
-//function for trigonometry dropdown
-function myFunction1() {
-    document.getElementById("drop1").classList.toggle("show");
-    }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-    if (!event.target.matches('.btn1')) {
-        var dropdowns = document.getElementsByClassName("drop-content1");
-        var j;
-        for (j = 0; j < dropdowns.length; j++) {
-        var openDropdown = dropdowns[j];
-        if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-        }
-        }
-    }
-}
 //change the button from deg to rad
 function degtorad(){
 	var click = document.getElementById("deg");
