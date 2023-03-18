@@ -3,6 +3,7 @@ let x=0;
 var display1 = document.getElementById('display');
 var buttons = document.querySelectorAll("button");
 var previous = document.getElementById('previous');
+var memory = document.getElementById('memory');
 var mode = "DEG";
 
 buttons.forEach((item) => {
@@ -69,25 +70,25 @@ buttons.forEach((item) => {
 )}
 ); 
 
-//function for trigonometry dropdown
-function myFunction1() {
-    document.getElementById("drop1").classList.toggle("show");
-    }
 
-    // Close the dropdown if the user clicks outside of it
-    window.onclick = function(event) {
-    if (!event.target.matches('.btn1')) {
-        var dropdowns = document.getElementsByClassName("drop-content1");
-        var j;
-        for (j = 0; j < dropdowns.length; j++) {
-        var openDropdown = dropdowns[j];
-        if (openDropdown.classList.contains('show')) {
-            openDropdown.classList.remove('show');
-        }
-        }
-    }
+function myFunction3() {
+	document.getElementById("drop3").classList.toggle("show");
+	}
+	
+	//Close the dropdown if the user clicks outside of it
+	window.onclick = function(event) {
+	if (!event.target.matches('.btn3')) {
+		var dropdowns = document.getElementsByClassName("drop-content3");
+		var i;
+		for (i = 0; i < dropdowns.length; i++) {
+		var openDropdown = dropdowns[i];
+		if (openDropdown.classList.contains('show')) {
+			openDropdown.classList.remove('show');
+		}
+		}
+	}
+	
 }
-
 //function for dropdown of functions
 function myFunction2() {
 	document.getElementById("drop2").classList.toggle("show");
@@ -107,6 +108,24 @@ function myFunction2() {
 	}
 }
 
+//function for trigonometry dropdown
+function myFunction1() {
+    document.getElementById("drop1").classList.toggle("show");
+    }
+
+    // Close the dropdown if the user clicks outside of it
+    window.onclick = function(event) {
+    if (!event.target.matches('.btn1')) {
+        var dropdowns = document.getElementsByClassName("drop-content1");
+        var j;
+        for (j = 0; j < dropdowns.length; j++) {
+        var openDropdown = dropdowns[j];
+        if (openDropdown.classList.contains('show')) {
+            openDropdown.classList.remove('show');
+        }
+        }
+    }
+}
 //change the button from deg to rad
 function degtorad(){
 	var click = document.getElementById("deg");
@@ -429,6 +448,7 @@ function cotin(){
 //M+ function adding number memory
 function mplus(){
 	x += eval(display1.value);
+	memory.value = x;
 	console.log(x);
 	var mc_element = document.getElementById("mc");
     mc_element.classList.add("fontWt");
@@ -440,13 +460,21 @@ function mplus(){
 //M- function removing number from memory
 function mminus(){
 	x -= eval(display1.value);
+	memory.value = x;
 	console.log(x);
+	var mc_element = document.getElementById("mc");
+    mc_element.classList.add("fontWt");
+    mc_element.classList.remove("btnDark");
+    var mr_element = document.getElementById("mr");
+    mr_element.classList.add("fontWt");
+    mr_element.classList.remove("btnDark");
 }
 //store in memory
 function ms(){
 	try{
 		x = eval(display1.value);
 		console.log(display1.value);
+		memory.value = x;
 	}
 	catch(error){
 		display1.value = "error";
@@ -461,6 +489,7 @@ function ms(){
 //clear from memory
 function mc(){
 	console.clear();
+	memory.value = "";
 	x=0;
 	var mc_element = document.getElementById("mc");
     mc_element.classList.remove("fontWt");
