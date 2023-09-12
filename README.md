@@ -1,3 +1,3 @@
 Link for Scientific Calculator
 
-https://stutivithlani.github.io/javascript-calculator/
+https://stuti7502.github.io/javascript-calculator/
